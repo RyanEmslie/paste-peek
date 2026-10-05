@@ -1,0 +1,9 @@
+{
+  "name": "paste-peek",
+  "version": "0.1.0",
+  "description": "Shows a small preview above the prompt of each image pasted into it",
+  "author": { "name": "Ryan Emslie" },
+  "license": "MIT",
+  "keywords": ["images", "screenshots", "clipboard", "preview", "prompt"],
+  "types": "./types/index.d.ts"
+}
