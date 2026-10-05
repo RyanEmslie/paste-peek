@@ -2,6 +2,8 @@
 
 A Claude Code mod that shows a small preview of each image you paste into the prompt.
 
+![A thumbnail of a pasted screenshot above the Claude Code prompt, labelled [Image #1]](docs/preview.png)
+
 When you paste a screenshot, Claude Code only puts a placeholder like `[Image #1]` in the prompt box. paste-peek draws a thumbnail of that image just above the prompt, so you can see what you're about to send. The preview goes away when you delete the placeholder or submit the prompt.
 
 ## Requirements
