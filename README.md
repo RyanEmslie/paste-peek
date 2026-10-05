@@ -12,16 +12,16 @@ When you paste a screenshot, Claude Code only puts a placeholder like `[Image #1
 
 ## Install
 
-Clone the repository:
+Clone the repository. The examples below use `~/code/paste-peek`; any folder works.
 
 ```sh
-git clone <repo-url> ~/code/paste-peek
+git clone https://github.com/RyanEmslie/paste-peek.git ~/code/paste-peek
 ```
 
 Then load it in one of two ways:
 
 - **For one session:** `claude --plugin-dir ~/code/paste-peek`
-- **For every session:** add the folder to `CLAUDE_CODE_PLUGIN_DIRS` in the `env` block of `~/.claude/settings.json`. Separate several folders with `:`.
+- **For every session:** add the folder to `CLAUDE_CODE_PLUGIN_DIRS` in the `env` block of `~/.claude/settings.json`. Use the absolute path of your clone, and separate several folders with `:`.
 
   ```json
   {
@@ -38,6 +38,9 @@ Paste an image with Ctrl+V as usual. A thumbnail labelled `[Image #N]` appears a
 - **Delete a placeholder** and its thumbnail disappears.
 - **Submit the prompt** and all thumbnails clear.
 - **`/paste-peek`** turns previews off or back on.
+- **Click `[-]`** at the right end of the row, or press Ctrl+X Ctrl+A, to collapse it for now. Claude Code draws this control, not the mod.
+
+Each thumbnail keeps the image's aspect ratio and is at most 24 columns wide and 8 rows tall, so wide screenshots fill the width and tall ones fill the height. The mod can't read the pixel size of a terminal cell, so it assumes a cell twice as tall as it is wide. In fonts with taller cells, thumbnails come out slightly wide.
 
 If there are more images than fit across the terminal, the row ends in `+N`.
 
@@ -48,7 +51,7 @@ If there are more images than fit across the terminal, the row ends in `+N`.
   1. a file path you dragged into the prompt
   2. the copy Claude Code saves when you paste, at `/tmp/claude-<uid>/<project>/<session>/images/N.png`
   3. the clipboard, or the file a Finder copy refers to
-- **Making the thumbnail.** The image is converted to PNG and shrunk so its longest side is at most 600 pixels. The copy goes in `$TMPDIR/paste-peek/<session>/`, and the terminal reads it from there directly.
+- **Making the thumbnail.** The image is converted to PNG and shrunk so its longest side is at most 600 pixels. The copy goes in `$TMPDIR/paste-peek/<session>/`, and the terminal reads it from there directly. The mod doesn't delete these copies; macOS clears old files from `$TMPDIR` on its own schedule. To remove them sooner, delete `$TMPDIR/paste-peek`.
 
 ## Limitations
 
